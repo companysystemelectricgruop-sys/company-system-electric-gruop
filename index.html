@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company System Electric Gruop | Cables Baja y Alta Tensión</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+
+        :root {
+            --azul-marino: #0A2342;
+            --amarillo-electrico: #FFD100;
+            --gris-oscuro: #333333;
+            --gris-claro: #F0F0F0;
+            --blanco: #FFFFFF;
+        }
+
+        body {
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--azul-marino) 0%, #134074 100%);
+            color: var(--blanco);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--amarillo-electrico);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--azul-marino);
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--amarillo-electrico);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(10, 35, 66, 0.90), rgba(10, 35, 66, 0.85)), url('');
+            background-color: var(--azul-marino);
+            color: var(--blanco);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h2 span {
+            color: var(--amarillo-electrico);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--amarillo-electrico);
+            color: var(--azul-marino);
+        }
+
+        .btn-primary:hover {
+            background-color: #E6BC00;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 2px solid var(--amarillo-electrico);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--amarillo-electrico);
+            color: var(--azul-marino);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--azul-marino);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--amarillo-electrico);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        .sobre-nosotros {
+            background-color: var(--gris-claro);
+        }
+
+        .sobre-nosotros p {
+            font-size: 1.05rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .servicio-card {
+            background-color: var(--blanco);
+            border-left: 5px solid var(--amarillo-electrico);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .servicio-card h3 {
+            color: var(--azul-marino);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .servicio-card ul {
+            list-style: none;
+        }
+
+        .servicio-card li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .servicio-card li::before {
+            content: "✅ ";
+            color: var(--azul-marino);
+        }
+
+        .caracteristicas {
+            background-color: var(--gris-claro);
+        }
+
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .caracteristica-item {
+            text-align: center;
+        }
+
+        .caracteristica-item h4 {
+            color: var(--azul-marino);
+            margin: 0.5rem 0;
+        }
+
+        .contacto {
+            background-color: var(--azul-marino);
+            color: var(--blanco);
+        }
+
+        .contacto .section-title {
+            color: var(--blanco);
+        }
+
+        .contacto .section-title::after {
+            background-color: var(--amarillo-electrico);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contacto-item h4 {
+            color: var(--amarillo-electrico);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #051527;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--amarillo-electrico);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                margin-top: 0.5rem;
+            }
+            nav a {
+                margin: 0 0.8rem;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera / Navegación -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">
+                    <h1>Company System Electric Gruop</h1>
+                    <p>Cables Baja y Alta Tensión</p>
+                </div>
+            </div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#servicios">Productos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Principal -->
+    <section class="hero" id="inicio">
+        <h2>Todo en Cables Eléctricos de <span>Baja y Alta Tensión</span></h2>
+        <p>Soluciones residenciales, comerciales, industriales y de infraestructura. Calidad, seguridad y cumplimiento con normativas eléctricas.</p>
+        <a href="#contacto" class="btn btn-primary">📩 Solicitar Cotización</a>
+        <a href="#servicios" class="btn btn-secondary">🔌 Ver Productos</a>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section class="sobre-nosotros" id="nosotros">
+        <h2 class="section-title">Acerca de Nosotros</h2>
+        <p>
+            Somos tu fuente confiable de cables y conductores eléctricos para todo tipo de proyectos. 
+            Ofrecemos una amplia gama de productos para <strong>baja tensión</strong> (residencial, comercial, instalaciones generales) 
+            y <strong>alta tensión</strong> (industria, transmisión, grandes obras e infraestructura eléctrica).
+            <br><br>
+            Seguridad, calidad y resistencia en cada metro. Cumplimos con las normativas más exigentes 
+            y te brindamos asesoría para elegir el producto adecuado a tu necesidad.
+        </p>
+    </section>
+
+    <!-- Productos y Servicios -->
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <h3>🏠 Baja Tensión</h3>
+                <ul>
+                    <li>Cables residenciales y comerciales</li>
+                    <li>Cables flexibles y rígidos</li>
+                    <li>Distintos calibres y aislamientos</li>
+                    <li>Para instalaciones generales</li>
+                </ul>
+            </div>
+            <div class="servicio-card">
+                <h3>🏭 Alta Tensión</h3>
+                <ul>
+                    <li>Cables para industria y transmisión</li>
+                    <li>Aislamiento especializado</li>
+                    <li>Proyectos de infraestructura</li>
+                    <li>Especificaciones técnicas precisas</li>
+                </ul>
+            </div>
+            <div class="servicio-card">
+                <h3>🔩 Materiales y Tipos</h3>
+                <ul>
+                    <li>Cables de cobre</li>
+                    <li>Cables de aluminio</li>
+                    <li>Conductores especializados</li>
+                    <li>Cumplimiento de normativas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué elegirnos -->
+    <section class="caracteristicas">
+        <h2 class="section-title">¿Por qué elegirnos?</h2>
+        <div class="caracteristicas-grid">
+            <div class="caracteristica-item">
+                <h4>✅ Calidad Garantizada</h4>
+                <p>Productos que cumplen con estándares de seguridad.</p>
+            </div>
+            <div class="caracteristica-item">
+                <h4>✅ Asesoría Técnica</h4>
+                <p>Te ayudamos a elegir el cable adecuado.</p>
+            </div>
+            <div class="caracteristica-item">
+                <h4>✅ Seguridad</h4>
+                <p>Materiales resistentes y certificados.</p>
+            </div>
+            <div class="caracteristica-item">
+                <h4>✅ Experiencia</h4>
+                <p>Conocimiento en proyectos de todo tipo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        <div class="contacto-grid">
+            <div class="contacto-item">
+                <h4>📍 Ubicación</h4>
+                <p>San José, Costa Rica 🇨🇷</p>
+            </div>
+            <div class="contacto-item">
+                <h4>📞 Teléfono / WhatsApp</h4>
+                <p>[Tu número aquí]</p>
+            </div>
+            <div class="contacto-item">
+                <h4>✉️ Correo</h4>
+                <p>[Tu correo aquí]</p>
+            </div>
+            <div class="contacto-item">
+                <h4>⏰ Horarios</h4>
+                <p>Lun - Vie: 7:00 a 17:00<br>Sáb: 8:00 a 12:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>⚡ Company System Electric Gruop — Todo en Cables de Baja y Alta Tensión ⚡</p>
+        <p>Síguenos en: 
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a>
+        </p>
+        <p style="margin-top:0.5rem; font-size:0.8rem;">© 2026 Todos los derechos reservados. San José, Costa Rica.</p>
+    </footer>
+
+</body>
+</html>
